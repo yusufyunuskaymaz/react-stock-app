@@ -1,18 +1,30 @@
-import "./App.css";
-import Counter from "./components/counter/Counter";
-import Todo from "./components/todo/Todo";
-import { store } from "./redux";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import AppRouter from "./router/AppRouter";
+import { grey, blueGrey } from "@mui/material/colors";
 import { Provider } from "react-redux";
-// import { legacy_createStore as createStore } from "redux";
-// import reducer from "./redux";
+import store from "./app/store";
+import { ToastContainer } from "react-toastify";
 
 function App() {
-  // const store = createStore(reducer);
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: grey["900"],
+      },
+      secondary: {
+        main: blueGrey["900"],
+      },
+    },
+  });
   return (
-    <div className="app">
-        <Counter />
-      <Todo />
-    </div>
+    <>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <AppRouter />
+        </Provider>
+        <ToastContainer />
+      </ThemeProvider>
+    </>
   );
 }
 
