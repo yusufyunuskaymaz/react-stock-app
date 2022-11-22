@@ -50,16 +50,23 @@ const icons = [
     },
   ];
 
+  const iconStyle = {
+    color:"#eee",
+    "& .MuiSvgIcon-root": {color:"#eee"},
+    "&:hover": {color: "red"},
+    "&:hover .MuiSvgIcon-root": {color: "red"}
+  }
+
 const MenuListItems = () => {
     const navigate = useNavigate()
   return (
     <div>
         <List>
-            
+
         {icons?.map((item, index) => (
-          <ListItem key={index} disablePadding>
+          <ListItem sx={iconStyle} key={index} disablePadding>
             {item.url.includes("http") && (
-                <ListItemButton to="https://14129.fullstack.clarusway.com/admin">
+                <ListItemButton  target={"_blank"} to="https://14129.fullstack.clarusway.com/admin">
                 <ListItemIcon>
                  {item.icon}
                 </ListItemIcon>
