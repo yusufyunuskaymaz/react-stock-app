@@ -7,8 +7,6 @@ const Firms = () => {
 
 const {getFirms, getSales} = useStockCalls()
 
- 
-
   useEffect(() => {
     getFirms()
     getSales()
